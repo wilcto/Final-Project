@@ -1,14 +1,19 @@
-let words;
+const fs = require('fs');
+const path = require('path');
 
-fetch("resources/valid-wordle-words.txt").then(convertData).then(processData);
-
-function convertData(rawData){
-    return rawData.text();
+function readFileIntoList(filePath) {
+  try {
+    const fileContent = fs.readFileSync(filePath, 'utf-8');
+    const lines = fileContent.split('\n');
+    return lines;
+  } catch (error) {
+    console.error(`Error reading file: ${error.message}`);
+    return [];
+  }
 }
 
-function processData(strData){
-    words = strData.split('\n');
-}
+const filePath = path.join(__dirname, 'my_text_file.txt');
+const words = readFileIntoList(filePath);
 
 let word = words[Math.floor(Math.random()*words.length())];
 let letters = word.split("");
