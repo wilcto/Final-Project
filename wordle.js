@@ -9,7 +9,9 @@ function convertData(rawData){
 function processData(strData){
     words = strData.split('\n');
 }
-console.log(words);
+
+let word = words[Math.floor(Math.random()*words.length())];
+let letters = word.split("");
 
 let one = document.getElementById("1a");
 let two = document.getElementById("1b");
