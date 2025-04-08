@@ -12,7 +12,7 @@ function readFileIntoList(filePath) {
   }
 }
 
-const filePath = path.join(__dirname, 'my_text_file.txt');
+const filePath = "resources/valid-wordle-words.txt";
 const words = readFileIntoList(filePath);
 
 let word = words[Math.floor(Math.random()*words.length())];
