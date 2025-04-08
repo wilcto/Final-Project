@@ -135,6 +135,7 @@ footer {
     height: 58px;
     width: 40px;
     margin: 2px;
+    color: black;
 }
 
 #game-container {
@@ -170,22 +171,24 @@ footer {
 
     .keyboard-row {
         display: flex;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
         justify-content: center;
-        gap: 5px;
-        margin: 5px 0;
+        gap: 1px;
+        margin: 0;
     }
 
     .keyboard-key {
-        font-size: 4.5vw;
+        font-size: 4vw;
         padding: 2vw;
         flex: 1 0 8%;
         max-width: 50px;
     }
 
     #enter-key, #backspace-key {
-        flex: 1 0 30%;
-        max-width: 100px;
+        flex: 1 0 20%;
+        min-width: 45px;
+        max-width: fit-content;
+        font-size: 2vw;
     }
 
     .box {
