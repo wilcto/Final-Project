@@ -9,7 +9,7 @@ function convertData(rawData){
 function processData(strData){
     words = strData.split('\n');
 }
-
+console.log(words);
 
 let one = document.getElementById("1a");
 let two = document.getElementById("1b");
