@@ -61,14 +61,20 @@
             <input type="text" id="6e" maxlength="1" disabled>
         </form>
 
-        <div id="success-box">
+        <div id="success-box" class="box">
             <p>Well done!</p>
             <button id="reload-button1">Play Again</button>
         </div>
-        <div id="fail-box">
+        <div id="fail-box" class="box">
             <p>Nice try!</p>
             <p>The word was: <span id="correct-word"></span></p>
             <button id="reload-button2">Play Again</button>
+        </div>
+        <div id="letters-box" class="box">
+            <p>Not enough letters</p>
+        </div>
+        <div id="word-box" class="box">
+            <p>Not in word list</p>
         </div>
     </main>
 

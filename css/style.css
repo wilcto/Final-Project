@@ -57,7 +57,7 @@ footer {
     font-size: 14px;
 }
 
-#success-box, #fail-box {
+.box {
     display: none;
     position: fixed;
     top: 50%;
@@ -72,6 +72,10 @@ footer {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
     z-index: 1000;
+}
+
+#letters-box, #word-box{
+    top: 25%;
 }
 
 #reload-button1, #reload-button2 {
