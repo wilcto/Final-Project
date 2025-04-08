@@ -152,3 +152,49 @@ footer {
     width: 60px;
     font-size: .9em;
 }
+
+@media screen and (max-width: 600px){
+    h1 {
+        font-size: 36px;
+    }
+
+    input {
+        height: 9vw;
+        width: 9vw;
+        font-size: 6vw;
+        max-width: none;
+        max-height: none;
+        margin-left: .5vw;
+        margin-right: .5vw;
+    }
+
+    .keyboard-row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 5px;
+        margin: 5px 0;
+    }
+
+    .keyboard-key {
+        font-size: 4.5vw;
+        padding: 2vw;
+        flex: 1 0 8%;
+        max-width: 50px;
+    }
+
+    #enter-key, #backspace-key {
+        flex: 1 0 30%;
+        max-width: 100px;
+    }
+
+    .box {
+        width: 80vw;
+        font-size: 5vw;
+    }
+
+    #reload-button1, #reload-button2 {
+        font-size: 4vw;
+        padding: 8px 12px;
+    }
+}
