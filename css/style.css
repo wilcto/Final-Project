@@ -1,0 +1,91 @@
+body {
+    background-color: #f8f9fa;
+    font-family: Helvetica, Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+header{
+    width: 100%;
+    border-bottom: 4px solid #212529;
+    padding: 15px;
+    background-color: #343a40;
+    color: white;
+    text-align: center;
+}
+
+h1{
+    font-size: 75px;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+form{
+    display: flex;
+    justify-content: center;
+}
+
+input{
+    height: 75px;
+    width: 75px;
+    margin-left: 5px;
+    margin-right:5px;
+    margin-top: 10px;
+    pointer-events: none;
+    font-family: Helvetica, Arial, sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 35px;
+    border: 1px solid black;
+    color: black;
+    transition: transform 0.5s ease-in-out;
+}
+
+footer {
+    margin-top: 20px;
+    padding: 10px;
+    text-align: center;
+    color: #6c757d;
+    font-size: 14px;
+}
+
+#success-box, #fail-box {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 3px solid black;
+    padding: 20px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    z-index: 1000;
+}
+
+#reload-button1, #reload-button2 {
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    background-color: #28a745;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#reload-button1:hover, #reload-button2:hover {
+    background-color: #218838;
+}

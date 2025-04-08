@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/html5reset.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <title>Wordle</title>
+</head>
+<body>
+    <header>
+        <h1>Wordle</h1>
+    </header>
+
+    <main>
+        <form id="row1">
+            <input type="text" id="1a" maxlength="1" disabled>
+            <input type="text" id="1b" maxlength="1" disabled>
+            <input type="text" id="1c" maxlength="1" disabled>
+            <input type="text" id="1d" maxlength="1" disabled>
+            <input type="text" id="1e" maxlength="1" disabled>
+        </form>
+
+        <form id="row2">
+            <input type="text" id="2a" maxlength="1" disabled>
+            <input type="text" id="2b" maxlength="1" disabled>
+            <input type="text" id="2c" maxlength="1" disabled>
+            <input type="text" id="2d" maxlength="1" disabled>
+            <input type="text" id="2e" maxlength="1" disabled>
+        </form>
+
+        <form id="row3">
+            <input type="text" id="3a" maxlength="1" disabled>
+            <input type="text" id="3b" maxlength="1" disabled>
+            <input type="text" id="3c" maxlength="1" disabled>
+            <input type="text" id="3d" maxlength="1" disabled>
+            <input type="text" id="3e" maxlength="1" disabled>
+        </form>
+
+        <form id="row4">
+            <input type="text" id="4a" maxlength="1" disabled>
+            <input type="text" id="4b" maxlength="1" disabled>
+            <input type="text" id="4c" maxlength="1" disabled>
+            <input type="text" id="4d" maxlength="1" disabled>
+            <input type="text" id="4e" maxlength="1" disabled>
+        </form>
+
+        <form id="row5">
+            <input type="text" id="5a" maxlength="1" disabled>
+            <input type="text" id="5b" maxlength="1" disabled>
+            <input type="text" id="5c" maxlength="1" disabled>
+            <input type="text" id="5d" maxlength="1" disabled>
+            <input type="text" id="5e" maxlength="1" disabled>
+        </form>
+
+        <form id="row6">
+            <input type="text" id="6a" maxlength="1" disabled>
+            <input type="text" id="6b" maxlength="1" disabled>
+            <input type="text" id="6c" maxlength="1" disabled>
+            <input type="text" id="6d" maxlength="1" disabled>
+            <input type="text" id="6e" maxlength="1" disabled>
+        </form>
+
+        <div id="success-box">
+            <p>Well done!</p>
+            <button id="reload-button1">Play Again</button>
+        </div>
+        <div id="fail-box">
+            <p>Nice try!</p>
+            <p>The word was: <span id="correct-word"></span></p>
+            <button id="reload-button2">Play Again</button>
+        </div>
+    </main>
+
+    <footer>
+        
+    </footer>
+
+    <script src="wordle.js"></script>
+
+</body>
+</html>
