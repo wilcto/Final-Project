@@ -161,7 +161,6 @@ function notInList(){
 
 function updateInputColor(input, color){
     input.style.backgroundColor = color;
-    input.style.border = "none";
     input.style.color = "white";
     updateKeyColor(input.value, color);
 }
