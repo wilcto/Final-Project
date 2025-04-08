@@ -15,6 +15,27 @@ let index = 1;
 
 document.addEventListener('keydown', function(event){
     const key = event.key;
+    keydownCheck(key);
+});
+
+let keys = document.querySelectorAll(".keyboard-key");
+
+for(const keyElement of keys){
+    keyElement.addEventListener("click", function(){
+        key = keyElement.dataset.key
+        keydownCheck(key);
+    });
+}
+
+document.getElementById("reload-button1").addEventListener("click", function(){
+    location.reload();
+});
+
+document.getElementById("reload-button2").addEventListener("click", function(){
+    location.reload();
+});
+
+function keydownCheck(key){
     if (key.length === 1 && key.match(/[a-z]/i)){
         if(one.value == ''){
             one.value = key;
@@ -29,7 +50,7 @@ document.addEventListener('keydown', function(event){
         }
     }
 
-    if(key === "Backspace"){
+    if(key === "Backspace" || key === "←"){
         if(five.value != ''){
             five.value = '';
         }else if(four.value != ''){
@@ -43,14 +64,14 @@ document.addEventListener('keydown', function(event){
         }
     }
 
-    if(key === "Enter"){
+    if(key === "Enter" || key === "↵"){
         if(five.value != ''){
             if(words.includes(one.value + two.value + three.value + four.value + five.value)){
                 let uw = [one, two, three, four, five];
                 let checkedLetters = [false, false, false, false, false];
                 for(let i = 0; i < 5; i++){
                     if(uw[i].value === letters[i]){
-                        uw[i].style.backgroundColor = "lightgreen";
+                        updateInputColor(uw[i], "green");
                         checkedLetters[i] = true;
                     }
                 }
@@ -60,14 +81,14 @@ document.addEventListener('keydown', function(event){
                 }
                 for(let i = 0; i < 5; i++){
                     for(let j = 0; j < 5; j++){
-                        if(uw[i].value === letters[j] && checkedLetters[j] === false && uw[i].style.backgroundColor != "lightgreen"){
-                            uw[i].style.backgroundColor = "yellow";
+                        if(uw[i].value === letters[j] && checkedLetters[j] === false && uw[i].style.backgroundColor != "green"){
+                            updateInputColor(uw[i], "goldenrod");
                             checkedLetters[j] = true;
                             break;
                         }
                     }
-                    if(uw[i].style.backgroundColor != "lightgreen" && uw[i].style.backgroundColor != "yellow"){
-                        uw[i].style.backgroundColor = "lightgrey";
+                    if(uw[i].style.backgroundColor != "green" && uw[i].style.backgroundColor != "goldenrod"){
+                        updateInputColor(uw[i], "dimgray");
                     }
                 }
                 
@@ -113,7 +134,7 @@ document.addEventListener('keydown', function(event){
             notEnoughLetters();
         }
     }
-});
+}
 
 function showSuccessMessage(){
     document.getElementById("success-box").style.display = "block";
@@ -138,10 +159,19 @@ function notInList(){
     }, 1000);
 }
 
-document.getElementById("reload-button1").addEventListener("click", function(){
-    location.reload();
-});
+function updateInputColor(input, color){
+    input.style.backgroundColor = color;
+    input.style.border = "none";
+    input.style.color = "white";
+    updateKeyColor(input.value, color);
+}
 
-document.getElementById("reload-button2").addEventListener("click", function(){
-    location.reload();
-});
+function updateKeyColor(value, color){
+    for(const key of keys){
+        if(value === key.dataset.key && key.style.backgroundColor != "green" && (key.style.backgroundColor != "goldenrod" || color === "green")){
+            key.style.backgroundColor = color;
+            key.style.color = "white";
+        }
+    }
+}
+
