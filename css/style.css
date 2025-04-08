@@ -136,6 +136,7 @@ footer {
     width: 40px;
     margin: 2px;
     color: black;
+    touch-action: manipulation;
 }
 
 #game-container {
