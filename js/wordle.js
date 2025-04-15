@@ -5,6 +5,8 @@ const words = ["aahed", "aalii", "aapas", "aargh", "aarti", "abaca", "abaci", "a
 let word = words[Math.floor(Math.random() * words.length)];
 let letters = word.split("");
 
+letters = ["w", "o", "r", "d", "s"];
+
 let one = document.getElementById("1a");
 let two = document.getElementById("1b");
 let three = document.getElementById("1c");
