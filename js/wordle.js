@@ -71,7 +71,7 @@ function keydownCheck(key){
                 let checkedLetters = [false, false, false, false, false];
                 for(let i = 0; i < 5; i++){
                     if(uw[i].value === letters[i]){
-                        updateInputColor(uw[i], "green");
+                        uw[i].style.setProperty('--status', "correct");
                         checkedLetters[i] = true;
                     }
                 }
@@ -81,17 +81,17 @@ function keydownCheck(key){
                 }
                 for(let i = 0; i < 5; i++){
                     for(let j = 0; j < 5; j++){
-                        if(uw[i].value === letters[j] && checkedLetters[j] === false && uw[i].style.backgroundColor != "green"){
-                            updateInputColor(uw[i], "goldenrod");
+                        if(uw[i].value === letters[j] && checkedLetters[j] === false && uw[i].style.getPropertyValue("--status") != "correct"){
+                            uw[i].style.setProperty('--status', "partial");
                             checkedLetters[j] = true;
                             break;
                         }
                     }
-                    if(uw[i].style.backgroundColor != "green" && uw[i].style.backgroundColor != "goldenrod"){
-                        updateInputColor(uw[i], "dimgray");
+                    if(uw[i].style.getPropertyValue("--status") != "correct" && uw[i].style.getPropertyValue("--status") != "partial"){
+                        uw[i].style.setProperty('--status', "incorrect");
                     }
                 }
-                
+                updateRowColor(uw);
                 if(index === 1){
                     one = document.getElementById("2a");
                     two = document.getElementById("2b");
@@ -159,12 +159,6 @@ function notInList(){
     }, 1000);
 }
 
-function updateInputColor(input, color){
-    input.style.backgroundColor = color;
-    input.style.color = "white";
-    updateKeyColor(input.value, color);
-}
-
 function updateKeyColor(value, color){
     for(const key of keys){
         if(value === key.dataset.key && key.style.backgroundColor != "green" && (key.style.backgroundColor != "goldenrod" || color === "green")){
@@ -174,3 +168,23 @@ function updateKeyColor(value, color){
     }
 }
 
+function updateRowColor(uw) {
+    uw.forEach((input, i) => {
+        setTimeout(() => {
+            input.style.setProperty('--final-color', getColor(input.style.getPropertyValue("--status")));
+            input.classList.add('flip');
+        }, i * 300);
+    });
+
+    setTimeout(() => {
+        uw.forEach((input) => {
+            updateKeyColor(input.value, getColor(input.style.getPropertyValue("--status")));
+        });
+    }, 1500);
+}
+
+function getColor(status) {
+    if (status === 'correct') return 'green';
+    if (status === 'partial') return 'goldenrod';
+    return 'dimgray';
+}
