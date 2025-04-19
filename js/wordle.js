@@ -75,10 +75,6 @@ function keydownCheck(key){
                         checkedLetters[i] = true;
                     }
                 }
-                if(checkedLetters[0] && checkedLetters[1] && checkedLetters[2] && checkedLetters[3] && checkedLetters[4]){
-                    showSuccessMessage();
-                    document.removeEventListener("keydown");
-                }
                 for(let i = 0; i < 5; i++){
                     for(let j = 0; j < 5; j++){
                         if(uw[i].value === letters[j] && checkedLetters[j] === false && uw[i].style.getPropertyValue("--status") != "correct"){
@@ -91,7 +87,7 @@ function keydownCheck(key){
                         uw[i].style.setProperty('--status', "incorrect");
                     }
                 }
-                updateRowColor(uw);
+                updateRowColor(uw, checkedLetters);
                 if(index === 1){
                     one = document.getElementById("2a");
                     two = document.getElementById("2b");
@@ -168,7 +164,7 @@ function updateKeyColor(value, color){
     }
 }
 
-function updateRowColor(uw) {
+function updateRowColor(uw, checkedLetters) {
     uw.forEach((input, i) => {
         setTimeout(() => {
             input.style.setProperty('--final-color', getColor(input.style.getPropertyValue("--status")));
@@ -180,6 +176,10 @@ function updateRowColor(uw) {
         uw.forEach((input) => {
             updateKeyColor(input.value, getColor(input.style.getPropertyValue("--status")));
         });
+        if(checkedLetters[0] && checkedLetters[1] && checkedLetters[2] && checkedLetters[3] && checkedLetters[4]){
+            showSuccessMessage();
+            document.removeEventListener("keydown");
+        }
     }, 1500);
 }
 
