@@ -1,5 +1,5 @@
 html, body {
-    height: 100vh;
+    height: 100svh;
     margin: 0;
     padding: 0;
     overflow: hidden;
@@ -198,7 +198,7 @@ input.flip {
     color: white;
   }
 
-@media screen and (max-width: 600px) {
+/* @media screen and (max-width: 600px) {
     html,body{
         height: 100dvh;
         overflow-y: clip;
@@ -248,4 +248,4 @@ input.flip {
         font-size: 4vw;
         padding: 8px 12px;
     }
-}
+} */
