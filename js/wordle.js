@@ -4,7 +4,17 @@ const words = ["aahed", "aalii", "aapas", "aargh", "aarti", "abaca", "abaci", "a
    
 let word = words[Math.floor(Math.random() * words.length)];
 let letters = word.split("");
-console.log(word);
+
+
+document.querySelectorAll('#game-container input[type="text"]').forEach(input => {
+    const id = input.id;
+    const row = id[0];
+    const col = id[1];
+
+    const colLetter = col.toUpperCase();
+
+    input.setAttribute('aria-label', `Row ${row}, Letter ${colLetter}`);
+  });
 
 let one = document.getElementById("1a");
 let two = document.getElementById("1b");
