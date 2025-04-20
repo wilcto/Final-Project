@@ -248,12 +248,4 @@ input.flip {
         font-size: 4vw;
         padding: 8px 12px;
     }
-
-    #game-container{
-        flex: none;
-    }
-
-    main{
-        justify-content:unset;
-    }
 }
