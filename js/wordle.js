@@ -4,6 +4,7 @@ const words = ["aahed", "aalii", "aapas", "aargh", "aarti", "abaca", "abaci", "a
    
 let word = words[Math.floor(Math.random() * words.length)];
 let letters = word.split("");
+console.log(word);
 
 let one = document.getElementById("1a");
 let two = document.getElementById("1b");
@@ -75,6 +76,16 @@ function keydownCheck(key){
                         checkedLetters[i] = true;
                     }
                 }
+                setTimeout(() => {
+                    if(checkedLetters[0] && checkedLetters[1] && checkedLetters[2] && checkedLetters[3] && checkedLetters[4]){
+                        uw.forEach((input, i)=> {
+                            setTimeout(() => {
+                                input.classList.add("bounce");
+                            }, i* 100);
+                        });
+                        showSuccessMessage();
+                    }
+                }, 1500);
                 for(let i = 0; i < 5; i++){
                     for(let j = 0; j < 5; j++){
                         if(uw[i].value === letters[j] && checkedLetters[j] === false && uw[i].style.getPropertyValue("--status") != "correct"){
@@ -87,7 +98,8 @@ function keydownCheck(key){
                         uw[i].style.setProperty('--status', "incorrect");
                     }
                 }
-                updateRowAndCheckStatus(uw, checkedLetters);
+                updateRow(uw);
+                checkIndex();
             }else{
                 notInList();
             }
@@ -120,7 +132,7 @@ function updateKeyColor(value, color){
     }
 }
 
-function updateRowAndCheckStatus(uw, checkedLetters) {
+function updateRow(uw) {
     uw.forEach((input, i) => {
         setTimeout(() => {
             input.style.setProperty('--final-color', getColor(input.style.getPropertyValue("--status")));
@@ -131,11 +143,6 @@ function updateRowAndCheckStatus(uw, checkedLetters) {
         uw.forEach((input) => {
             updateKeyColor(input.value, getColor(input.style.getPropertyValue("--status")));
         });
-        if(checkedLetters[0] && checkedLetters[1] && checkedLetters[2] && checkedLetters[3] && checkedLetters[4]){
-            showSuccessMessage();
-            document.removeEventListener("keydown");
-        }
-        checkIndex();
     }, 1500);
 }
 
@@ -178,16 +185,23 @@ function checkIndex(){
         five = document.getElementById("6e");
     }else if(index === 6){
         showFailMessage();
-        document.removeEventListener("keydown");
     }
     index++;
 }
 
 function showSuccessMessage(){
-    document.getElementById("success-box").style.display = "block";
+    setTimeout(() => {
+        document.getElementById("success-box").style.display = "block";
+        document.getElementById("success-box").classList.add("fade-in");
+    }, 1500);
 }
 
 function showFailMessage(){
     document.getElementById("correct-word").innerHTML = word;
-    document.getElementById("fail-box").style.display = "block";
+    document.getElementById("correct-word").style.textTransform = "uppercase";
+    setTimeout(() => {
+        document.getElementById("fail-box").style.display = "block";
+        document.getElementById("fail-box").classList.add("fade-in");
+    }, 1500);
+    
 }
