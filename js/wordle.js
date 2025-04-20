@@ -87,7 +87,7 @@ function keydownCheck(key){
                         uw[i].style.setProperty('--status', "incorrect");
                     }
                 }
-                updateRowColor(uw, checkedLetters);
+                updateRowAndCheckStatus(uw, checkedLetters);
                 index++;
             }else{
                 notInList();
