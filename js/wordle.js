@@ -5,6 +5,7 @@ const words = ["aahed", "aalii", "aapas", "aargh", "aarti", "abaca", "abaci", "a
 let word = words[Math.floor(Math.random() * words.length)];
 let letters = word.split("");
 
+console.log(word);
 
 document.querySelectorAll('#game-container input[type="text"]').forEach(input => {
     const id = input.id;
@@ -47,6 +48,9 @@ document.getElementById("reload-button2").addEventListener("click", function(){
 });
 
 function keydownCheck(key){
+    if(index === 7){
+        return;
+    }
     if (key.length === 1 && key.match(/[a-z]/i)){
         if(one.value == ''){
             one.value = key;
@@ -77,6 +81,7 @@ function keydownCheck(key){
 
     if(key === "Enter" || key === "↵"){
         if(five.value != ''){
+            let win = false;
             if(words.includes(one.value + two.value + three.value + four.value + five.value)){
                 let uw = [one, two, three, four, five];
                 let checkedLetters = [false, false, false, false, false];
@@ -86,16 +91,11 @@ function keydownCheck(key){
                         checkedLetters[i] = true;
                     }
                 }
-                setTimeout(() => {
-                    if(checkedLetters[0] && checkedLetters[1] && checkedLetters[2] && checkedLetters[3] && checkedLetters[4]){
-                        uw.forEach((input, i)=> {
-                            setTimeout(() => {
-                                input.classList.add("bounce");
-                            }, i* 100);
-                        });
-                        showSuccessMessage();
-                    }
-                }, 1500);
+                if(checkedLetters[0] && checkedLetters[1] && checkedLetters[2] && checkedLetters[3] && checkedLetters[4]){
+                    win = true;
+                    showSuccessMessage(uw);
+                }
+                
                 for(let i = 0; i < 5; i++){
                     for(let j = 0; j < 5; j++){
                         if(uw[i].value === letters[j] && checkedLetters[j] === false && uw[i].style.getPropertyValue("--status") != "correct"){
@@ -109,7 +109,9 @@ function keydownCheck(key){
                     }
                 }
                 updateRow(uw);
-                checkIndex();
+                if(!win){
+                    checkIndex();
+                }
             }else{
                 notInList();
             }
@@ -199,10 +201,17 @@ function checkIndex(){
     index++;
 }
 
-function showSuccessMessage(){
+function showSuccessMessage(uw){
     setTimeout(() => {
-        document.getElementById("success-box").style.display = "block";
-        document.getElementById("success-box").classList.add("fade-in");
+        uw.forEach((input, i)=> {
+            setTimeout(() => {
+                input.classList.add("bounce");
+            }, i* 100);
+        });
+        setTimeout(() => {
+            document.getElementById("success-box").style.display = "block";
+            document.getElementById("success-box").classList.add("fade-in");
+        }, 500);
     }, 1500);
 }
 
