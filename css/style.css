@@ -31,7 +31,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /*justify-content: space-between;*/
+    justify-content: space-between;
     width: 100%;
     overflow: hidden;
     max-height: 100%;
@@ -243,5 +243,13 @@ input.flip {
     #reload-button1, #reload-button2 {
         font-size: 4vw;
         padding: 8px 12px;
+    }
+
+    #game-container{
+        flex: none;
+    }
+
+    main{
+        justify-content:unset;
     }
 }
