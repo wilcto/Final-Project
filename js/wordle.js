@@ -88,7 +88,6 @@ function keydownCheck(key){
                     }
                 }
                 updateRowAndCheckStatus(uw, checkedLetters);
-                index++;
             }else{
                 notInList();
             }
@@ -181,6 +180,7 @@ function checkIndex(){
         showFailMessage();
         document.removeEventListener("keydown");
     }
+    index++;
 }
 
 function showSuccessMessage(){
