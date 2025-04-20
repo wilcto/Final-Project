@@ -88,40 +88,6 @@ function keydownCheck(key){
                     }
                 }
                 updateRowColor(uw, checkedLetters);
-                if(index === 1){
-                    one = document.getElementById("2a");
-                    two = document.getElementById("2b");
-                    three = document.getElementById("2c");
-                    four = document.getElementById("2d");
-                    five = document.getElementById("2e");
-                }else if(index === 2){
-                    one = document.getElementById("3a");
-                    two = document.getElementById("3b");
-                    three = document.getElementById("3c");
-                    four = document.getElementById("3d");
-                    five = document.getElementById("3e");
-                }else if(index === 3){
-                    one = document.getElementById("4a");
-                    two = document.getElementById("4b");
-                    three = document.getElementById("4c");
-                    four = document.getElementById("4d");
-                    five = document.getElementById("4e");
-                }else if(index === 4){
-                    one = document.getElementById("5a");
-                    two = document.getElementById("5b");
-                    three = document.getElementById("5c");
-                    four = document.getElementById("5d");
-                    five = document.getElementById("5e");
-                }else if(index === 5){
-                    one = document.getElementById("6a");
-                    two = document.getElementById("6b");
-                    three = document.getElementById("6c");
-                    four = document.getElementById("6d");
-                    five = document.getElementById("6e");
-                }else if(index === 6){
-                    showFailMessage();
-                    document.removeEventListener("keydown");
-                }
                 index++;
             }else{
                 notInList();
@@ -130,15 +96,6 @@ function keydownCheck(key){
             notEnoughLetters();
         }
     }
-}
-
-function showSuccessMessage(){
-    document.getElementById("success-box").style.display = "block";
-}
-
-function showFailMessage(){
-    document.getElementById("correct-word").innerHTML = word;
-    document.getElementById("fail-box").style.display = "block";
 }
 
 function notEnoughLetters(){
@@ -164,14 +121,13 @@ function updateKeyColor(value, color){
     }
 }
 
-function updateRowColor(uw, checkedLetters) {
+function updateRowAndCheckStatus(uw, checkedLetters) {
     uw.forEach((input, i) => {
         setTimeout(() => {
             input.style.setProperty('--final-color', getColor(input.style.getPropertyValue("--status")));
             input.classList.add('flip');
         }, i * 300);
     });
-
     setTimeout(() => {
         uw.forEach((input) => {
             updateKeyColor(input.value, getColor(input.style.getPropertyValue("--status")));
@@ -180,6 +136,7 @@ function updateRowColor(uw, checkedLetters) {
             showSuccessMessage();
             document.removeEventListener("keydown");
         }
+        checkIndex();
     }, 1500);
 }
 
@@ -187,4 +144,50 @@ function getColor(status) {
     if (status === 'correct') return 'green';
     if (status === 'partial') return 'goldenrod';
     return 'dimgray';
+}
+
+function checkIndex(){
+    if(index === 1){
+        one = document.getElementById("2a");
+        two = document.getElementById("2b");
+        three = document.getElementById("2c");
+        four = document.getElementById("2d");
+        five = document.getElementById("2e");
+    }else if(index === 2){
+        one = document.getElementById("3a");
+        two = document.getElementById("3b");
+        three = document.getElementById("3c");
+        four = document.getElementById("3d");
+        five = document.getElementById("3e");
+    }else if(index === 3){
+        one = document.getElementById("4a");
+        two = document.getElementById("4b");
+        three = document.getElementById("4c");
+        four = document.getElementById("4d");
+        five = document.getElementById("4e");
+    }else if(index === 4){
+        one = document.getElementById("5a");
+        two = document.getElementById("5b");
+        three = document.getElementById("5c");
+        four = document.getElementById("5d");
+        five = document.getElementById("5e");
+    }else if(index === 5){
+        one = document.getElementById("6a");
+        two = document.getElementById("6b");
+        three = document.getElementById("6c");
+        four = document.getElementById("6d");
+        five = document.getElementById("6e");
+    }else if(index === 6){
+        showFailMessage();
+        document.removeEventListener("keydown");
+    }
+}
+
+function showSuccessMessage(){
+    document.getElementById("success-box").style.display = "block";
+}
+
+function showFailMessage(){
+    document.getElementById("correct-word").innerHTML = word;
+    document.getElementById("fail-box").style.display = "block";
 }
