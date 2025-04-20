@@ -31,7 +31,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    /*justify-content: space-between;*/
     width: 100%;
     overflow: hidden;
 }
@@ -60,15 +60,6 @@ input {
     transition: transform 0.5s ease-in-out;
     background-color: white;
     --status: "none";
-}
-
-footer {
-    flex-shrink: 0;
-    margin: 0;
-    padding: 10px;
-    text-align: center;
-    color: #6c757d;
-    font-size: 14px;
 }
 
 .box {
