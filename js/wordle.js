@@ -211,7 +211,7 @@ function showSuccessMessage(uw){
         setTimeout(() => {
             document.getElementById("success-box").style.display = "block";
             document.getElementById("success-box").classList.add("fade-in");
-        }, 500);
+        }, 800);
     }, 1500);
 }
 
