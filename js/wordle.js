@@ -15,6 +15,7 @@ document.querySelectorAll('#game-container input[type="text"]').forEach(input =>
     const colLetter = col.toUpperCase();
 
     input.setAttribute('aria-label', `Row ${row}, Letter ${colLetter}`);
+    input.value = "";
   });
 
 let one = document.getElementById("1a");
